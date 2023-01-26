@@ -15,19 +15,23 @@ const boss = {
   image: "assets/boss.gif"
 }
 
-
+// NOTE we are drawing the hero to the page - hero is an object so we don't need to use any array methods. This can change to a for/forEach if we decide to add more heros (we would need to change the model to an array)
 function drawHero(){
+  // declare a variable for your template and set it to an empty string 
   let heroTemplate = ''
+  // apply the HTML to your template
   heroTemplate += `
     <p class="text-center">"${hero.name}"</p>
     <img class="heroSize" src="${hero.image}" alt="">
     `
+    // draw the HTML to the page using the assigned Id
     // @ts-ignore
-    // @ts-ignore
-    let heroElm = document.getElementById('hero').innerHTML = heroTemplate
+  document.getElementById('hero').innerHTML = heroTemplate
 }
+// Make sure to invoke the function outside of the written function to 'activate' it
 drawHero()
 
+// NOTE this function is drawing the heros gold, health, and damage power to the page. I wanted this to be in a separate area
 function drawHeroStats(){
   let heroStatsTemplate = ''
   heroStatsTemplate += `
@@ -62,22 +66,22 @@ function drawHeroStats(){
     </div>  
     `
     // @ts-ignore
-    // @ts-ignore
-    let heroStatsElm = document.getElementById('hero-stats').innerHTML = heroStatsTemplate
+    document.getElementById('hero-stats').innerHTML = heroStatsTemplate
 }
 drawHeroStats()
 
+// NOTE this function is drawing the boss to the page. This is going to be similar to drawing heros because boss is just a single object at the moment. 
 function drawBoss(){
   let bossTemplate = ''
   bossTemplate += `
   <img class="img-fluid" src="assets/boss.gif" alt="" onclick="attackBoss(${boss.health})">
   `
   // @ts-ignore
-  // @ts-ignore
-  let bossElm = document.getElementById('boss').innerHTML = bossTemplate
+  document.getElementById('boss').innerHTML = bossTemplate
 }
 drawBoss()
 
+// NOTE this function is drawing the boss name and health to the page in a separate area
 function drawBossStats(){
   let bossStatsTemplate = ''
   bossStatsTemplate += `
@@ -90,12 +94,12 @@ function drawBossStats(){
     </div>
   `
   // @ts-ignore
-  // @ts-ignore
-  let bossStatsElm = document.getElementById('boss-stats').innerHTML = bossStatsTemplate
+  document.getElementById('boss-stats').innerHTML = bossStatsTemplate
 }
 drawBossStats()
 
 
+// NOTE this function is attacking the boss - boss health will go down per click
 function attackBoss(){
   // Check that we are getting the console to attack the boss on click
   // console.log('attacking the boss');
@@ -110,6 +114,7 @@ function attackBoss(){
   hero.gold = hero.gold + 150
   hero.damage += 10
   hero.health = 100
+  // draw our new hero stats to the page
   drawHeroStats()
     // take 5 health off the MAX health
     boss.maxHealth -= 5
@@ -122,9 +127,11 @@ function attackBoss(){
     // increase the bosses health by multiplying the current level by 100
     boss.health = boss.level*100
   }
+  // redraw the boss stats to see the changes
   drawBossStats()
 }
 
+// NOTE on a 3 (or 5) second interval the boss will do (passive) damage to the hero. Re-draw the hero stats to see the change in health
 function bossDoesDamage(){
   // For each hero do...
     // decrease hero health by 5
