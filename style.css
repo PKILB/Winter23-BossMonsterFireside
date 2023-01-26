@@ -1,0 +1,47 @@
+header{
+  min-height: 20vh;
+}
+
+main{
+  min-height: 70vh;
+}
+
+.characterBox{
+  max-height: 30vh;
+  transform: translateY(20em);
+}
+
+footer{
+  min-height: 10vh;
+}
+
+p{
+  margin: 0;
+  color: white;
+}
+
+.bg-main{
+  background: url('../assets/bgDungeon.jpg');
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.iconSize{
+  width: 30px;
+  height: 30px;
+  transform: translateY(10px);
+}
+
+.iconBubble{
+  border-radius: 50rem;
+  height: 50px;
+  width: 50px;
+  background-color: rgb(164, 130, 111);
+}
+
+.heroSize{
+  max-width: 140px;
+  max-height: 140px;
+}

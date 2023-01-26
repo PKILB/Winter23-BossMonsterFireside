@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>MoonLight Boss Fight</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<style>
+  body.debug .container,
+  body.debug .container-fluid {
+    outline: 2px double blue;
+    outline-offset: -2px;
+  }
+
+  body.debug .row {
+    outline: 2px dashed red;
+    outline-offset: -2px;
+  }
+
+  body.debug [class*="col-"] {
+    outline: 2px dotted forestgreen;
+    outline-offset: -3px;
+  }
+</style>
+
+<body class="debug container-fluid bg-main">
+  
+  <!-- SECTION This will contain the health bar, money information, backpack (modal) and purchase options for companions etc. (modal) -->
+  <header class="row justify-content-between">
+    <div class="col-md-5" id="hero-stats">
+      <!-- STUB INJECT HERO STATS TEMPLATE -->
+    </div>
+    <div class="col-md-5"></div>
+    <!-- STUB INJECT COMPANIONS -->
+  </header>
+
+  
+<!-- SECTION This will contain the main images for the boss and the hero -->
+  <main class="row justify-content-evenly">
+    <div class="col-md-5 characterBox" id="boss">
+      <!-- STUB INJECT BOSS TEMPLATE -->
+    </div>
+    <div class="col-md-2 characterBox">
+      <div class="row" id="hero">
+        <!-- STUB INJECT HERO TEMPLATE -->
+      </div>
+    </div>
+  </main>
+
+
+<!-- SECTION This will contain the boss health information  -->
+  <footer class="row justify-content-center" id="boss-stats">
+    <!-- STUB INJECT BOSS STATS TEMPLATE -->
+  </footer>
+
+
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
