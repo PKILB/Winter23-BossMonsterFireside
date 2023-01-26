@@ -32,22 +32,26 @@
   }
 </style>
 
-<body class="debug container-fluid bg-main">
+<body class="container-fluid bg-main">
   
   <!-- SECTION This will contain the health bar, money information, backpack (modal) and purchase options for companions etc. (modal) -->
   <header class="row justify-content-between">
-    <div class="col-md-5" id="hero-stats">
+    <div class="col-md-5 p-3" id="hero-stats">
       <!-- STUB INJECT HERO STATS TEMPLATE -->
     </div>
-    <div class="col-md-5"></div>
-    <!-- STUB INJECT COMPANIONS -->
+    <div class="col-md-5 purchase-bg mt-2">
+      <!-- STUB COMPANIONS -->
+    </div>
   </header>
 
   
 <!-- SECTION This will contain the main images for the boss and the hero -->
-  <main class="row justify-content-evenly">
+  <main class="row justify-content-center">
     <div class="col-md-5 characterBox" id="boss">
       <!-- STUB INJECT BOSS TEMPLATE -->
+    </div>
+    <div class="col-md-2 mt-5">
+      <!-- STUB INJECT COMPANION(S)-->
     </div>
     <div class="col-md-2 characterBox">
       <div class="row" id="hero">

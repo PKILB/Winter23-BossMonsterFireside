@@ -1,23 +1,31 @@
 header{
-  min-height: 20vh;
+  min-height: 30vh;
 }
 
 main{
-  min-height: 70vh;
+  min-height: 60vh;
 }
 
 .characterBox{
   max-height: 30vh;
-  transform: translateY(20em);
+  transform: translateY(10em);
 }
 
 footer{
-  min-height: 10vh;
+  min-height: 5vh;
 }
 
 p{
   margin: 0;
   color: white;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.63);
+  font-weight: bold;
+}
+
+.p-dark{
+  color: black;
+  font-weight: bold;
+  text-shadow: none;
 }
 
 .bg-main{
@@ -26,6 +34,11 @@ p{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.book-icons{
+  width: 20px;
+  height: 20px;
 }
 
 .iconSize{
@@ -38,10 +51,23 @@ p{
   border-radius: 50rem;
   height: 50px;
   width: 50px;
-  background-color: rgb(164, 130, 111);
+  background-color: rgb(123, 89, 83);
 }
 
 .heroSize{
   max-width: 140px;
   max-height: 140px;
+}
+
+.companionSize{
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.purchase-bg{
+  background: url('../assets/openBook.gif');
+  height: 30vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-size: cover; */
 }
