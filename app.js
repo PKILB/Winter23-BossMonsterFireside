@@ -147,7 +147,7 @@ function bossDoesDamage(){
     }
   drawHeroStats()
 }
-// setInterval(bossDoesDamage, 2000)
+setInterval(bossDoesDamage, 2000)
 
 
 
@@ -198,54 +198,106 @@ const companions = [
 
 // NOTE Start with writing out each individual function
 
-function drawLoyalBoy(){
-  let loyalBoyTemplate = ''
-  loyalBoyTemplate += `
-  <p class="text-center">Loyal Boy <span>100</span> </p>
-  <img class="companionSize text-center" src="assets/loyalBoy.gif" alt="">
-  `
+// function drawLoyalBoy(){
+//   let loyalBoyTemplate = ''
+//   loyalBoyTemplate += `
+//   <p class="text-center">Loyal Boy <span>100</span> </p>
+//   <img class="companionSize text-center" src="assets/loyalBoy.gif" alt="">
+//   `
+//   // @ts-ignore
+//   document.getElementById('loyal-boy').innerHTML = loyalBoyTemplate
+// }
+
+// function purchaseLoyalBoy(){
+//   // console.log('buying the most the loyal boy');
+//   if(hero.gold >= 150){
+//     hero.gold -= 150
+//     drawHeroStats()
+//     drawLoyalBoy()
+//     startInterval()
+//   } else if(hero.gold < 150 ){
+//     window.alert('You do not have enough gold!')
+//   }
+// }
+
+
+// function loyalBoyAttack(){
+//   // console.log('loyal boy attack');
+//   drawLoyalBoy()
+//   const loyalBoy = companions.find(companion => companion.name == "Loyal Boy")
+//   if(loyalBoy && boss.health > 0){
+//     boss.health -= loyalBoy.value
+//     drawBossStats()
+//   } else {
+//     window.alert("You defeated the boss!")
+//     hero.gold = hero.gold + 150
+//     hero.damage += 10
+//     hero.health = 100
+//     // draw our new hero stats to the page
+//     drawHeroStats()
+//     // take 5 health off the MAX health
+//     boss.maxHealth -= 5
+//     // increase the boss level by 1
+//     boss.level++
+//     // double the amount of damage the boss will do
+//     boss.damage = boss.level*2
+//     // increase the bosses health by multiplying the current level by 100
+//     boss.health = boss.level*100
+//   }
+// }
+
+// function startInterval(){
+//   setInterval(loyalBoyAttack, 5000)
+// }
+
+
+// NOTE newly refactored code so that its more re-usable so we can get those other companions 
+
+function drawCompanion(){
+  let companionTemplate = ''
+  companions.forEach(companion => {
+    if(!companion.isPurchased){
+      return
+    }
+    companionTemplate += `
+      <p>${companion.name} <span>${companion.health}</span> </p>
+      <img class="companionSize" src="${companion.img}" alt="">
+    `
+  })
   // @ts-ignore
-  document.getElementById('loyal-boy').innerHTML = loyalBoyTemplate
+  document.getElementById('companion').innerHTML = companionTemplate
 }
 
-function purchaseLoyalBoy(){
-  // console.log('buying the most the loyal boy');
-  if(hero.gold >= 150){
-    hero.gold -= 150
+function buyCompanion(companionName){
+  const purchasedCompanion = companions.find(companion => companion.name == companionName)
+  // console.log(purchasedCompanion)
+  // @ts-ignore
+  if(hero.gold >= purchasedCompanion.cost && !purchasedCompanion.isPurchased){
+    // @ts-ignore
+    hero.gold -= purchasedCompanion.cost
+    // @ts-ignore
+    purchasedCompanion.isPurchased = true
+    drawCompanion()
     drawHeroStats()
-    drawLoyalBoy()
-    startInterval()
-  } else if(hero.gold < 150 ){
-    window.alert('You do not have enough gold!')
-  }
-}
-
-
-function loyalBoyAttack(){
-  // console.log('loyal boy attack');
-  drawLoyalBoy()
-  const loyalBoy = companions.find(companion => companion.name == "Loyal Boy")
-  if(loyalBoy && boss.health > 0){
-    boss.health -= loyalBoy.value
-    drawBossStats()
   } else {
-    window.alert("You defeated the boss!")
-    hero.gold = hero.gold + 150
-    hero.damage += 10
-    hero.health = 100
-    // draw our new hero stats to the page
-    drawHeroStats()
-    // take 5 health off the MAX health
-    boss.maxHealth -= 5
-    // increase the boss level by 1
-    boss.level++
-    // double the amount of damage the boss will do
-    boss.damage = boss.level*2
-    // increase the bosses health by multiplying the current level by 100
-    boss.health = boss.level*100
+    window.alert("You don't have enough gold!")
   }
 }
 
-function startInterval(){
-  setInterval(loyalBoyAttack, 5000)
+function applyCompanion(){
+  companions.forEach(companion => {
+    if(companion.isPurchased){
+      if(companion.type == 'damage'){
+        boss.health -= companion.value
+        drawBossStats()
+      } else if(companion.type == 'healing'){
+        hero.health += companion.value
+        drawHeroStats()
+      }
+    }
+  })
 }
+
+setInterval(applyCompanion, 5000)
+
+
