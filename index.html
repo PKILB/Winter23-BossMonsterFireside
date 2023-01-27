@@ -32,7 +32,7 @@
   }
 </style>
 
-<body class="container-fluid bg-main">
+<body class="debug container-fluid bg-main">
   
   <!-- SECTION This row will contain the health bar, money information, damage power and purchase options for companions etc. (modal) -->
   <header class="row justify-content-between">
@@ -41,6 +41,7 @@
     </div>
     <div class="col-md-5 purchase-bg mt-2">
       <!-- STUB COMPANIONS -->
+      <button class="btn btn-primary" onclick="purchaseLoyalBoy()">Loyal Boy</button>
     </div>
   </header>
 
@@ -51,7 +52,11 @@
       <!-- STUB INJECT BOSS TEMPLATE -->
     </div>
     <div class="col-md-2 mt-5">
-      <!-- STUB INJECT COMPANION(S)-->
+      <div class="row justify-content-center" id="loyal-boy">
+        <!-- STUB INJECT COMPANION(S)-->
+        <!-- <p class="text-center">Loyal Boy <span>100</span> </p>
+        <img class="companionSize text-center" src="assets/loyalBoy.gif" alt=""> -->
+      </div>
     </div>
     <div class="col-md-2 characterBox">
       <div class="row" id="hero">
