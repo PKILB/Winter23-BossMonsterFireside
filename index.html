@@ -32,36 +32,90 @@
   }
 </style>
 
-<body class="debug container-fluid bg-main">
+<body class="container-fluid bg-main">
   
-  <!-- SECTION This row will contain the health bar, money information, damage power and purchase options for companions etc. (modal) -->
+  <!-- SECTION This will contain the health bar, money information, backpack (modal) and purchase options for companions etc. (modal) -->
   <header class="row justify-content-between">
     <div class="col-md-5 p-3" id="hero-stats">
       <!-- STUB INJECT HERO STATS TEMPLATE -->
     </div>
     <div class="col-md-5 purchase-bg mt-2">
-      <!-- STUB COMPANIONS -->
-      <div class="row">
-        <button class="btn btn-primary" onclick="buyCompanion('Loyal Boy')">Loyal Boy</button>
-        <button class="btn btn-primary" onclick="buyCompanion('SUPER Loyal Boy')">SUPER Loyal Boy</button>
-        <button class="btn btn-primary" onclick="buyCompanion('Healthy Boy')">Healthy Boy</button>
-        <button class="btn btn-primary" onclick="buyCompanion('Fox Helper')">Fox Helper</button>
+      <div class="row justify-content-center text-center" id="companion-stats">
+        <div class="col-md-4 p-3">
+          <!-- NOTE SINGLE FUNCTION BUTTON -->
+          <!-- <button class="btn btn-primary" onclick="purchaseLoyalBoy()">Loyal Boy</button> -->
+          <!-- --------------------------- -->
+          <!-- NOTE REFACTOR BUTTONS -->
+          <button class="btn btn-outline-dark" onclick="buyCompanion('Loyal Boy')">Loyal Boy <span><img class="book-icons" src="assets/loyalBoy.gif" alt=""></span> </button>
+          <!-- --------------------- -->
+          <div class="d-flex justify-content-center text-center">
+            <img src="/assets/coin.png" alt="">
+            <p class="p-dark">150</p>
+          </div>
+          <div class="d-flex justify-content-center text-center">
+            <img src="/assets/sword.png" alt="">
+            <p class="p-dark">5</p>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <button class="btn btn-outline-dark" onclick="buyCompanion('Healthy Boy')">Healthy Boy <span><img class="book-icons" src="assets/healthyBoy.gif" alt=""></span> </button>
+          <div class="d-flex justify-content-center text-center">
+            <img src="/assets/coin.png" alt="">
+            <p class="p-dark">200</p>
+          </div>
+          <div class="d-flex justify-content-center text-center">
+            <img src="/assets/sword.png" alt="">
+            <p class="p-dark">10</p>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center text-center">
+        <div class="col-md-4 p-3">
+          <button class="btn btn-outline-dark" onclick="buyCompanion('SUPER Loyal Boy')">OG Loyal Boy <span><img class="book-icons" src="assets/SUPERloyalBoy.gif" alt=""></span> </button>
+          <div class="d-flex justify-content-center text-center">
+            <img src="/assets/coin.png" alt="">
+            <p class="p-dark">20000</p>
+          </div>
+          <div class="d-flex justify-content-center text-center">
+            <img src="/assets/sword.png" alt="">
+            <p class="p-dark">100</p>
+          </div>
+        </div>
+        <div class="col-md-4 p-3">
+          <button class="btn btn-outline-dark" onclick="buyCompanion('Fox Helper')">Fox Helper <span><img class="book-icons" src="assets/foxHelper.gif" alt=""></span> </button>
+          <div class="d-flex justify-content-center text-center">
+            <img src="/assets/coin.png" alt="">
+            <p class="p-dark">50</p>
+          </div>
+          <div class="d-flex justify-content-center text-center">
+            <img src="/assets/sword.png" alt="">
+            <p class="p-dark">2</p>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   
-<!-- SECTION This row will contain the main images for the boss and the hero -->
+<!-- SECTION This will contain the main images for the boss and the hero -->
   <main class="row justify-content-center">
     <div class="col-md-5 characterBox" id="boss">
       <!-- STUB INJECT BOSS TEMPLATE -->
     </div>
+
     <div class="col-md-2 mt-5">
+
+      <!-- NOTE INJECTING SINGLE COMPANION-->
+      <!-- <div class="row justify-content-center" id="loyal-boy"> -->
+        <!-- STUB INJECT LOYAL BOY COMPANION -->
+      <!-- </div> -->
+      <!-- ------------------------------ -->
+
+      <!-- NOTE REFACTOR INJECTING ALL COMPANIONS -->
       <div class="row justify-content-center" id="companion">
-        <!-- STUB INJECT COMPANION(S)-->
-          <!-- <p>Companion Name <span>Companion Health</span> </p>
-          <img src="companion img" alt=""> -->
+        <!-- STUB INJECT COMPANIONS -->
       </div>
+      <!-- ------------------------------- -->
     </div>
     <div class="col-md-2 characterBox">
       <div class="row" id="hero">
@@ -71,7 +125,7 @@
   </main>
 
 
-<!-- SECTION This row will contain the boss health information  -->
+<!-- SECTION This will contain the boss health information  -->
   <footer class="row justify-content-center" id="boss-stats">
     <!-- STUB INJECT BOSS STATS TEMPLATE -->
   </footer>

@@ -15,23 +15,18 @@ const boss = {
   image: "assets/boss.gif"
 }
 
-// NOTE we are drawing the hero to the page - hero is an object so we don't need to use any array methods. This can change to a for/forEach if we decide to add more heros (we would need to change the model to an array)
+
 function drawHero(){
-  // declare a variable for your template and set it to an empty string 
   let heroTemplate = ''
-  // apply the HTML to your template
   heroTemplate += `
     <p class="text-center">"${hero.name}"</p>
     <img class="heroSize" src="${hero.image}" alt="">
     `
-    // draw the HTML to the page using the assigned Id
     // @ts-ignore
   document.getElementById('hero').innerHTML = heroTemplate
 }
-// Make sure to invoke the function outside of the written function to 'activate' it
 drawHero()
 
-// NOTE this function is drawing the heros gold, health, and damage power to the page. I wanted this to be in a separate area
 function drawHeroStats(){
   let heroStatsTemplate = ''
   heroStatsTemplate += `
@@ -66,22 +61,22 @@ function drawHeroStats(){
     </div>  
     `
     // @ts-ignore
-    document.getElementById('hero-stats').innerHTML = heroStatsTemplate
+    // @ts-ignore
+  document.getElementById('hero-stats').innerHTML = heroStatsTemplate
 }
 drawHeroStats()
 
-// NOTE this function is drawing the boss to the page. This is going to be similar to drawing heros because boss is just a single object at the moment. 
 function drawBoss(){
   let bossTemplate = ''
   bossTemplate += `
   <img class="img-fluid" src="assets/boss.gif" alt="" onclick="attackBoss(${boss.health})">
   `
   // @ts-ignore
+  // @ts-ignore
   document.getElementById('boss').innerHTML = bossTemplate
 }
 drawBoss()
 
-// NOTE this function is drawing the boss name and health to the page in a separate area
 function drawBossStats(){
   let bossStatsTemplate = ''
   bossStatsTemplate += `
@@ -94,12 +89,12 @@ function drawBossStats(){
     </div>
   `
   // @ts-ignore
+  // @ts-ignore
   document.getElementById('boss-stats').innerHTML = bossStatsTemplate
 }
 drawBossStats()
 
 
-// NOTE this function is attacking the boss - boss health will go down per click
 function attackBoss(){
   // Check that we are getting the console to attack the boss on click
   // console.log('attacking the boss');
@@ -114,7 +109,6 @@ function attackBoss(){
   hero.gold = hero.gold + 150
   hero.damage += 10
   hero.health = 100
-  // draw our new hero stats to the page
   drawHeroStats()
     // take 5 health off the MAX health
     boss.maxHealth -= 5
@@ -127,11 +121,9 @@ function attackBoss(){
     // increase the bosses health by multiplying the current level by 100
     boss.health = boss.level*100
   }
-  // redraw the boss stats to see the changes
   drawBossStats()
 }
 
-// NOTE on a 3 (or 5) second interval the boss will do (passive) damage to the hero. Re-draw the hero stats to see the change in health
 function bossDoesDamage(){
   // For each hero do...
     // decrease hero health by 5
@@ -147,7 +139,7 @@ function bossDoesDamage(){
     }
   drawHeroStats()
 }
-setInterval(bossDoesDamage, 2000)
+// setInterval(bossDoesDamage, 2000)
 
 
 
@@ -196,44 +188,67 @@ const companions = [
 ]
 
 
-// NOTE Start with writing out each individual function
+// NOTE Start with writing out each individual function for one object!
 
+
+// NOTE start by drawing a single object from the companions array to the page (if we continue this way we would need a function for each object)
 // function drawLoyalBoy(){
-//   let loyalBoyTemplate = ''
-//   loyalBoyTemplate += `
-//   <p class="text-center">Loyal Boy <span>100</span> </p>
-//   <img class="companionSize text-center" src="assets/loyalBoy.gif" alt="">
-//   `
-//   // @ts-ignore
-//   document.getElementById('loyal-boy').innerHTML = loyalBoyTemplate
-// }
-
-// function purchaseLoyalBoy(){
-//   // console.log('buying the most the loyal boy');
-//   if(hero.gold >= 150){
-//     hero.gold -= 150
-//     drawHeroStats()
-//     drawLoyalBoy()
-//     startInterval()
-//   } else if(hero.gold < 150 ){
-//     window.alert('You do not have enough gold!')
+//   // if the bosses health is greater than 0 ...
+//   if(boss.health > 0){
+//   // set the objects template to an empty string
+//     let loyalBoyTemplate = ''
+//   // apply the HTML to the template
+//     loyalBoyTemplate += `
+//     <p class="text-center">"Loyal Boy" : <span>100</span></p>
+//     <img class="companionSize text-center" src="assets/loyalBoy.gif" alt="">
+//     `
+//     // @ts-ignore
+//   // draw the object to the page using an assigned ID that wil apply the template to that specific object
+//   // we could also create an update() function that will only take in the document.getElement.. 
+//     document.getElementById('loyal-boy').innerHTML = loyalBoyTemplate
 //   }
 // }
 
+// // NOTE this function will purchase a single object. We will need to set a button on the index that will interact with this button 
+// function purchaseLoyalBoy(){
+//   // first check that the button is hooked up with a console log
+//   console.log("buying the most loyal boy");
+//   // add in the game logic, if the hero has gold available...
+//   if(hero.gold >= 150){
+//   // take the cost of the companion out of the heros total gold
+//     hero.gold -= 150
+//   // redraw the hero stats to see the change in gold 
+//     drawHeroStats()
+//   // call the function to draw the object to the fighting area
+//     drawLoyalBoy()
+//   // call the function that is starting the interval that will run our objects attack function
+//     startInterval()
+//   // game logic thats saying that if the hero doesn't have the necessary gold then pop an alert that will prevent notify the player that there is not enough gold 
+//   } else if(hero.gold == 0){
+//     window.alert("You do not have enough gold!")
+//   }
+// }
 
+// // NOTE this function will run our object attacking the boss when we click on the boss. This will need to have a function set in the HTML on the boss object
 // function loyalBoyAttack(){
-//   // console.log('loyal boy attack');
+//   // console log to make sure the click is doing something
+//   console.log('loyal boy attack!');
+//   // draw the object that you are attacking with after you purchase it
 //   drawLoyalBoy()
-//   const loyalBoy = companions.find(companion => companion.name == "Loyal Boy")
+//   // Find the specific object by completing a find in the companions array
+//   const loyalBoy = companions.find(companion => companion.name = 'Loyal Boy')
+//   // Game logic, if the object is there AND the boss still has health ...
 //   if(loyalBoy && boss.health > 0){
+//   // apply game logic, boss health will decrease by the value that the object has
 //     boss.health -= loyalBoy.value
+//   // update the boss stats to reflect whats going on
 //     drawBossStats()
+//   // if the condition is NOT met then this stuff will happen 
 //   } else {
 //     window.alert("You defeated the boss!")
 //     hero.gold = hero.gold + 150
 //     hero.damage += 10
 //     hero.health = 100
-//     // draw our new hero stats to the page
 //     drawHeroStats()
 //     // take 5 health off the MAX health
 //     boss.maxHealth -= 5
@@ -251,36 +266,40 @@ const companions = [
 // }
 
 
-// NOTE newly refactored code so that its more re-usable so we can get those other companions 
+// NOTE REFACTORED CODE
+// NOTE How can we make all the code above more reusable, refactoring the code to make fewer and more reusable functions is key here
 
-function drawCompanion(){
+// NOTE this function will be able to draw all of our companions and put them into a template we build here
+function drawCompanions(){
   let companionTemplate = ''
   companions.forEach(companion => {
-    if(!companion.isPurchased){
-      return
+    if(companion.isPurchased){
+      companionTemplate += `
+        <p class="text-center">"${companion.name}" : <span>${companion.health}</span></p>
+        <img class="companionSize text-center" src="${companion.img}" alt="">
+      `
     }
-    companionTemplate += `
-      <p>${companion.name} <span>${companion.health}</span> </p>
-      <img class="companionSize" src="${companion.img}" alt="">
-    `
-  })
+  });
   // @ts-ignore
   document.getElementById('companion').innerHTML = companionTemplate
 }
 
+// NOTE this function will allow us to purchase a companion when we find it by its name
 function buyCompanion(companionName){
+  // find the companion
   const purchasedCompanion = companions.find(companion => companion.name == companionName)
-  // console.log(purchasedCompanion)
+  console.log(purchasedCompanion);
+
   // @ts-ignore
   if(hero.gold >= purchasedCompanion.cost && !purchasedCompanion.isPurchased){
     // @ts-ignore
     hero.gold -= purchasedCompanion.cost
     // @ts-ignore
     purchasedCompanion.isPurchased = true
-    drawCompanion()
+    drawCompanions()
     drawHeroStats()
-  } else {
-    window.alert("You don't have enough gold!")
+  } else{
+    window.alert("You do not have enough gold!")
   }
 }
 
@@ -295,9 +314,7 @@ function applyCompanion(){
         drawHeroStats()
       }
     }
-  })
+  });
 }
 
 setInterval(applyCompanion, 5000)
-
-
